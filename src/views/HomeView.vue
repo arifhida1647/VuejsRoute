@@ -175,101 +175,15 @@
 
 <script>
 // @ is an alias to /src
-
+import axios from "axios"
 export default {
   name: 'HomeView',
   data() {
     return {
       currentIndex: 0,
-      items: [
-        {
-          imageSrc: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
-          title: "Noteworthy technology acquisitions 2021",
-          description: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-          link: "#",
-        },
-        {
-          imageSrc: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-          title: "Noteworthy technology acquisitions 2021",
-          description: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-          link: "#",
-        },
-        {
-          imageSrc: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-          title: "Noteworthy technology acquisitions 2021",
-          description: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-          link: "#",
-        },
-        {
-          imageSrc: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-          title: "Noteworthy technology acquisitions 2021",
-          description: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-          link: "#",
-        },
-        {
-          imageSrc: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-          title: "Noteworthy technology acquisitions 2021",
-          description: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-          link: "#",
-        },
-        {
-          imageSrc: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-          title: "Noteworthy technology acquisitions 2021",
-          description: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-          link: "#",
-        },
-        // Tambahkan item lainnya sesuai kebutuhan Anda.
-      ],
-      imageGrid: [
-        [
-          {
-            src: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-          },
-          {
-            src: "https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-          },
-        ],
-        [
-          {
-            src: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80",
-          },
-          {
-            src: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-          },
-          {
-            src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg",
-          },
-        ],
-        [
-          {
-            src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg",
-          },
-          {
-            src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg",
-          },
-          {
-            src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg",
-          },
-        ],
-        [
-          {
-            src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg",
-          },
-          {
-            src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg",
-          },
-          {
-            src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg",
-          },
-        ],
-      ],
-      images: [
-        'https://images.unsplash.com/photo-1695418624980-1b26cb42b58a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-        'https://images.unsplash.com/photo-1682686581220-689c34afb6ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-        'https://images.unsplash.com/photo-1695751240451-2e499d93eb6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-        'https://images.unsplash.com/photo-1695650858277-6d1eb7ce3216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-        'https://images.unsplash.com/photo-1696299872422-0f72e707a037?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      ],
+      items: [],
+      imageGrid: [],
+      images: [],
     };
   },
   methods: {
@@ -285,6 +199,26 @@ export default {
         this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
       }, 100); // You can adjust the delay as needed
     },
+    setItem(data){
+      this.items = data;
+    },
+    setImage(data){
+      this.images = data;
+    },
+    setGridImage(data){
+      this.imageGrid = data;
+    }
+  },
+  mounted(){
+    axios.get("https://api.jsonbin.io/v3/b/6523982712a5d37659892952")
+    .then((response)=> this.setImage(response.data.record))
+    .catch((error) => console.log(error));
+    axios.get("https://api.jsonbin.io/v3/b/6523978f0574da7622b6508f")
+    .then((response)=> this.setGridImage(response.data.record))
+    .catch((error) => console.log(error));
+    axios.get("https://api.jsonbin.io/v3/b/6523955354105e766fbfb679")
+    .then((response)=> this.setItem(response.data.record))
+    .catch((error) => console.log(error));
   },
 
 }
