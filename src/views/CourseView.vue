@@ -127,97 +127,12 @@
 import {
     reactive
 } from 'vue';
-
+import axios from "axios"
 export default {
     data() {
         return {
-            accordions: [{
-                    title: "[Day 1] CV And Cover Letter",
-                    content: "Flowbite is an open-source library...",
-                    open: false,
-                },
-                {
-                    title: "[Day 2] Frontend Learning",
-                    content: "Flowbite is first conceptualized and designed...",
-                    open: false,
-                },
-                {
-                    title: "[Day 3] Frontend Learning",
-                    content: "The main difference is that the core components...",
-                    open: false,
-                },
-                {
-                    title: "[Day 4] Frontend Learning",
-                    content: "The main difference is that the core components...",
-                    open: false,
-                },
-                {
-                    title: "[Day 5] Frontend Learning",
-                    content: "The main difference is that the core components...",
-                    open: false,
-                },
-                {
-                    title: "[Day 6] Frontend Learning",
-                    content: "The main difference is that the core components...",
-                    open: false,
-                },
-                {
-                    title: "[Day 7] Frontend Learning",
-                    content: "The main difference is that the core components...",
-                    open: false,
-                },
-                {
-                    title: "[Day 8] Frontend Learning",
-                    content: "The main difference is that the core components...",
-                    open: false,
-                }, {
-                    title: "[Day 9] Frontend Learning",
-                    content: "The main difference is that the core components...",
-                    open: false,
-                }, {
-                    title: "[Day 10] Frontend Learning",
-                    content: "The main difference is that the core components...",
-                    open: false,
-                },
-            ],
-            products: [{
-                    name: "Arif Hidayat",
-                    groups: "No Groups",
-                    roles: "Student",
-                    LastAccess: "1 Hours 30 Minute",
-                },
-                {
-                    name: "Arif Hidayat",
-                    groups: "No Groups",
-                    roles: "Student",
-                    LastAccess: "1 Hours 30 Minute",
-                },
-                {
-                    name: "Arif Hidayat",
-                    groups: "No Groups",
-                    roles: "Student",
-                    LastAccess: "1 Hours 30 Minute",
-                },
-                {
-                    name: "Arif Hidayat",
-                    groups: "No Groups",
-                    roles: "Student",
-                    LastAccess: "1 Hours 30 Minute",
-                },
-                {
-                    name: "Arif Hidayat",
-                    groups: "No Groups",
-                    roles: "Student",
-                    LastAccess: "1 Hours 30 Minute",
-                },
-                {
-                    name: "Arif Hidayat",
-                    groups: "No Groups",
-                    roles: "Student",
-                    LastAccess: "1 Hours 30 Minute",
-                },
-                // Daftar produk lainnya di sini
-            ],
+            accordions: [],
+            products: [],
             itemsPerPage: 5, // Jumlah item per halaman
             currentPage: 1, // Halaman saat ini
         }
@@ -278,15 +193,30 @@ export default {
         gotoPage(page) {
             this.currentPage = page;
         },
-    }
+        setAccordions(data) {
+            this.accordions = data;
+        },
+        setProduct(data) {
+            this.products = data;
+        }
+    },
+    mounted() {
+        axios.get("https://api.jsonbin.io/v3/b/6523a7d612a5d37659892e20")
+            .then((response) => this.setAccordions(response.data.record))
+            .catch((error) => console.log(error));
+        axios.get("https://api.jsonbin.io/v3/b/6523a72d54105e766fbfbc07")
+            .then((response) => this.setProduct(response.data.record))
+            .catch((error) => console.log(error));
+    },
 };
 </script>
 
 <style scoped>
-#main{
-  height: 1000px;
+#main {
+    height: 1000px;
 }
-#head{
+
+#head {
     background-image: url(../assets/unsplash.jpg);
 }
 </style>
